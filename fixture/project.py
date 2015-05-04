@@ -38,12 +38,12 @@ class ProjectHelper:
         wd = self.app.wd
         project_names_list = wd.find_elements_by_xpath("//a[text()='{0}']")
         if project.name in project_names_list:
-            k = 1
-            return k
+            return True
 
 
     def delete_project(self, project):
         wd = self.app.wd
+        wd.get("http://localhost/mantisbt-1.2.19/manage_proj_page.php")
         wd.find_element_by_link_text(project.name).click()
         wd.find_element_by_css_selector('input[value="Delete Project"]').click()
         wd.find_element_by_css_selector('input[value="Delete Project"]').click()
